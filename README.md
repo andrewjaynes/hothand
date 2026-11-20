@@ -9,7 +9,7 @@ We test whether Duke men's basketball players shot better after a run of makes d
 ## What's in the repo
 
 ```
-PROJECT_SUMMARY.md              1-page summary with final results (due Dec 2)
+PROJECT_SUMMARY.md / .pdf       1-page summary with final results (due Dec 2)
 PROJECT_DESCRIPTION.md          topic, approach, early results, check-in questions
 project_meeting_notes           notes from our chat about the project
 data/
