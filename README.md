@@ -4,11 +4,12 @@ Is the hot hand real at Duke? Final project for Discrete Math and Proofs, Fall 2
 
 We test whether Duke men's basketball players shot better after a run of makes during the 2025-26 season than their overall percentage predicts. The null hypothesis is that every field goal attempt is independent of the ones before it. We compare each player's real streak behavior to thousands of shuffled versions of his season, and we build Markov chain models where the state is a player's last few shots.
 
-The full plan, the math, and a first look at the numbers are in [PROJECT_DESCRIPTION.md](PROJECT_DESCRIPTION.md).
+**Result:** no player and no team-level hot hand, after comparing each player to 10,000 shuffled versions of his own season. Several players did take more threes right after a make. The 1-page summary with all the numbers is in [PROJECT_SUMMARY.md](PROJECT_SUMMARY.md), and the original plan is in [PROJECT_DESCRIPTION.md](PROJECT_DESCRIPTION.md).
 
 ## What's in the repo
 
 ```
+PROJECT_SUMMARY.md              1-page summary with final results (due Dec 2)
 PROJECT_DESCRIPTION.md          topic, approach, early results, check-in questions
 project_meeting_notes           notes from our chat about the project
 data/
@@ -19,6 +20,13 @@ scripts/
   build_dataset.py              builds the CSV from the raw play-by-play
   summary.py                    builds the summary table
   shuffle_test_preview.py       quick within-game shuffle test for two players
+  analysis.py                   full analysis: shuffle tests, Markov models, power, shot selection
+results/
+  shuffle_tests.csv             D_k, shuffled baseline, p-values (raw and Holm) per shooter and k
+  stratified_tests.csv          same test, shuffling 2s and 3s separately
+  markov_models.csv             order 0-3 chains: likelihood ratio tests, held-out log loss
+  power.csv                     detection rate for simulated hot hands of size 0 to 0.20
+  shot_selection.csv            share of next shots that are 3s after makes vs. misses
 ```
 
 ## The data
@@ -43,10 +51,12 @@ Always count streaks within a game. A make at the end of one game should not car
 
 ## Running the scripts
 
-Requires Python 3 with pandas, numpy, and pyarrow.
+Requires Python 3 with pandas, numpy, scipy, and pyarrow.
 
 ```
-pip install pandas numpy pyarrow
+pip install pandas numpy scipy pyarrow
+
+python scripts/analysis.py data/duke_fga_2025_26.csv results   # about 2 minutes
 
 python scripts/summary.py data/duke_fga_2025_26.csv data/summary_conditional_probs.csv
 python scripts/shuffle_test_preview.py data/duke_fga_2025_26.csv
@@ -60,11 +70,14 @@ python scripts/build_dataset.py <path to hoopR-mbb-data> data/duke_fga_2025_26.c
 
 ## Still to do
 
-- [ ] Full shuffle test (10,000 shuffles) for every player with 90+ attempts, k = 1, 2, 3
-- [ ] Fit order 1, 2, and 3 Markov chains and compare them to the independent model
-- [ ] Simulate shooters with a built-in hot hand to measure the test's power
-- [ ] Check whether shot selection (3s, shot distance) changes after makes
-- [ ] Correct for multiple comparisons
+- [x] Full shuffle test (10,000 shuffles) for every player with 90+ attempts, k = 1, 2, 3
+- [x] Fit order 1, 2, and 3 Markov chains and compare them to the independent model
+- [x] Simulate shooters with a built-in hot hand to measure the test's power
+- [x] Check whether shot selection (3s vs. 2s) changes after makes
+- [x] Correct for multiple comparisons
+- [ ] Charts for the poster
+- [ ] ~3 page write-up
+- [ ] Optional: shot distance from court coordinates as another difficulty control
 
 ## Deadlines
 
