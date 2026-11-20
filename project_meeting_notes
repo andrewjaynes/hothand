@@ -1,0 +1,20 @@
+Notes on Akin hot hand chat
+Reference papers referenced in the bonus on hot hand stuff
+Has been some studies done
+
+We have a ton of data- can totally do the probabilities
+Construct market models
+
+For your null hypothesis: shots are independent of each other
+Generate fake string of shots, 200 free throws
+Overall free throw percentage was 90, if no hothand, generate string of free throws based only on that percentage, then compute those conditional probablities- that's our baseline, 
+
+Also generate simulated data where they're not independent, and look at those conditional probabilities
+
+Variety of simulated and actual data
+
+Get a p value
+
+
+
+Pick just free throws or general game, longer runs, whichever one has more data. consider looking at whole team also in addition to individual players. let's do just last season so just 25-26 season. 
