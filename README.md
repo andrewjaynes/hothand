@@ -9,8 +9,8 @@ We test whether Duke men's basketball players shot better after a run of makes d
 ## What's in the repo
 
 ```
-PROJECT_SUMMARY.md / .pdf       1-page summary with final results (due Dec 2)
-PROJECT_DESCRIPTION.md          topic, approach, early results, check-in questions
+PROJECT_SUMMARY .md/.pdf/.docx  1-page summary with final results (due Dec 2)
+PROJECT_DESCRIPTION .md/.docx   topic, approach, early results, check-in questions
 project_meeting_notes           notes from our chat about the project
 data/
   duke_fga_2025_26.csv          every Duke field goal attempt in 2025-26, in shot order
