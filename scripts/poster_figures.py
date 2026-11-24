@@ -508,10 +508,6 @@ def main_extra(csv, res, out):
     fig_conclusion(out)
 
 
-if __name__ == '__main__':
-    main(*sys.argv[1:4])
-    main_extra(*sys.argv[1:4])
-    fig_layout(sys.argv[3])
 
 
 # ---------- assembly map ----------
@@ -567,3 +563,9 @@ def fig_layout(out):
     fig.savefig(f'{out}/00_assembly_map.pdf')
     plt.close(fig)
     print('saved 00_assembly_map')
+
+
+if __name__ == '__main__':
+    main(*sys.argv[1:4])
+    main_extra(*sys.argv[1:4])
+    fig_layout(sys.argv[3])
