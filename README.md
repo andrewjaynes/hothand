@@ -9,8 +9,8 @@ We test whether Duke men's basketball players shot better after a run of makes d
 ## What's in the repo
 
 ```
-PROJECT_SUMMARY .md/.pdf/.docx  1-page summary with final results (due Dec 2)
-PROJECT_DESCRIPTION .md/.docx   topic, approach, early results, check-in questions
+PROJECT_SUMMARY.md              1-page summary with final results (due Dec 2)
+PROJECT_DESCRIPTION.md          topic, approach, early results, check-in questions
 project_meeting_notes           notes from our chat about the project
 data/
   duke_fga_2025_26.csv          every Duke field goal attempt in 2025-26, in shot order
@@ -21,6 +21,8 @@ scripts/
   summary.py                    builds the summary table
   shuffle_test_preview.py       quick within-game shuffle test for two players
   analysis.py                   full analysis: shuffle tests, Markov models, power, shot selection
+  poster_figures.py             builds every poster image in poster/
+poster/                         print-ready poster images (PNG 300 dpi + PDF), plus an assembly map
 results/
   shuffle_tests.csv             D_k, shuffled baseline, p-values (raw and Holm) per shooter and k
   stratified_tests.csv          same test, shuffling 2s and 3s separately
@@ -57,6 +59,7 @@ Requires Python 3 with pandas, numpy, scipy, and pyarrow.
 pip install pandas numpy scipy pyarrow
 
 python scripts/analysis.py data/duke_fga_2025_26.csv results   # about 2 minutes
+python scripts/poster_figures.py data/duke_fga_2025_26.csv results poster
 
 python scripts/summary.py data/duke_fga_2025_26.csv data/summary_conditional_probs.csv
 python scripts/shuffle_test_preview.py data/duke_fga_2025_26.csv
@@ -75,7 +78,7 @@ python scripts/build_dataset.py <path to hoopR-mbb-data> data/duke_fga_2025_26.c
 - [x] Simulate shooters with a built-in hot hand to measure the test's power
 - [x] Check whether shot selection (3s vs. 2s) changes after makes
 - [x] Correct for multiple comparisons
-- [ ] Charts for the poster
+- [x] Charts for the poster (see poster/00_assembly_map.png)
 - [ ] ~3 page write-up
 - [ ] Optional: shot distance from court coordinates as another difficulty control
 
